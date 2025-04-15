@@ -25,8 +25,6 @@ SECRET_KEY = 'django-insecure-1hpgrt3)jpi2qe*_*m#gjb#=!ifs3_fmr%f0^03fhnqnaq4_h#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 INSTALLED_APPS = [
@@ -57,9 +55,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://68.183.229.98:3000",  # your frontend URL
 ]
 CORS_ALLOW_CREDENTIALS = True
+
 CSRF_TRUSTED_ORIGINS = [
     "http://68.183.229.98:3000",
 ]
+
+ALLOWED_HOSTS = ["68.183.229.98", "localhost", "127.0.0.1"]
+
 ROOT_URLCONF = 'backend_kpru.urls'
 
 TEMPLATES = [
