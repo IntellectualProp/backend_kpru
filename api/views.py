@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import WebsiteSetting
+from myapp.models import WebsiteSetting
 from .serializers import WebsiteSettingSerializer
 
 @api_view(["GET"])
