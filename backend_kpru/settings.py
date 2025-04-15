@@ -81,8 +81,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'kpru_db',
-        'USER': 'sim',
-        'PASSWORD': 'Aa076225658.',
+        'USER': 'sn',
+        'PASSWORD': '180904Tech',
         'HOST': 'localhost',  # or your DB host/IP
         'PORT': '5432',
     }
