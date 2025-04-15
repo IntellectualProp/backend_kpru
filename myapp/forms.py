@@ -1,9 +1,9 @@
 from django import forms
-from .models import TodoItem
+from .models import WebsiteSetting
 
-class TodoItemForm(forms.ModelForm):
+class WebsiteSettingForm(forms.ModelForm):
     image_file = forms.ImageField(required=False)  # Temporary field for image upload
 
     class Meta:
-        model = TodoItem
-        fields = ['title', 'completed', 'image_file']
+        model = WebsiteSetting
+        fields = ['tag', 'image_file']

@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    "myapp"
+    'rest_framework',
+    "myapp",
 ]
 
 MIDDLEWARE = [
@@ -78,10 +79,15 @@ WSGI_APPLICATION = 'backend_kpru.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'kpru_db',
+        'USER': 'sim',
+        'PASSWORD': 'Aa076225658.',
+        'HOST': 'localhost',  # or your DB host/IP
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation

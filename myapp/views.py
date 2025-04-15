@@ -1,5 +1,8 @@
+from django.http import HttpResponse
 from django.shortcuts import render, HttpResponse
-from .models import TodoItem
+from .models import WebsiteSetting
+from mimetypes import guess_type
+from django.http import Http404
 
 # Create your views here.
 
@@ -9,12 +12,15 @@ def home(request):
 
 
 def todos(request):
-    return render(request, 'todos.html', {'todos': TodoItem.objects.all()})
+    return render(request, 'todos.html', {'todos': WebsiteSetting.objects.all()})
 
 
-def show_binary_image(request, pk):
-    item = TodoItem.objects.get(pk=pk)
-    if item.image_binary:
-        # or 'image/jpeg'
-        return HttpResponse(item.image_binary, content_type='image/png')
-    return HttpResponse("No binary image found", status=404)
+def preview_image(request, filename):  # ← match URL pattern
+    try:
+        setting = WebsiteSetting.objects.get(image_file_name=filename)
+        if setting.image_binary:
+            mime_type, _ = guess_type(filename)
+            return HttpResponse(setting.image_binary, content_type=mime_type or 'application/octet-stream')
+        raise Http404("Image binary data not found.")
+    except WebsiteSetting.DoesNotExist:
+        raise Http404("Image not found.")

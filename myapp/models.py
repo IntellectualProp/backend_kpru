@@ -1,10 +1,10 @@
 from django.db import models
 
-class TodoItem(models.Model):
-    title = models.CharField(max_length=100)
-    completed = models.BooleanField(default=False)
-    image_binary = models.BinaryField(blank=True, null=True)  # Save image as binary data
-    image_file_name = models.CharField(max_length=255, blank=True, null=True)  # Store image file name
+class WebsiteSetting(models.Model):
+    tag = models.CharField(max_length=100)
+    created_time = models.DateTimeField(auto_now_add=True)
+    image_binary = models.BinaryField(blank=True, null=True)
+    image_file_name = models.CharField(max_length=255, unique=True, blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return self.tag

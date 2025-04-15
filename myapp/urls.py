@@ -4,6 +4,5 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('todos/', views.todos, name='Todos'),
-    path('binary-image/<int:pk>/', views.show_binary_image,
-         name='show_binary_image'),
+    path('preview_image/<str:filename>/', views.preview_image, name='preview_image'),
 ]

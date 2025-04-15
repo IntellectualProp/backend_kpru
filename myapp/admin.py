@@ -1,14 +1,15 @@
 from django.contrib import admin
 from django import forms
-from .models import TodoItem
+from .models import WebsiteSetting
+from django.utils.safestring import mark_safe
 
 
-class TodoItemForm(forms.ModelForm):
+class WebsiteSettingForm(forms.ModelForm):
     image_file = forms.ImageField(required=False)  # Custom image upload field
 
     class Meta:
-        model = TodoItem
-        fields = ['title', 'completed', 'image_file']
+        model = WebsiteSetting
+        fields = ['tag', 'image_file']
 
     def save(self, commit=True):
         obj = super().save(commit=False)
@@ -23,16 +24,14 @@ class TodoItemForm(forms.ModelForm):
         return obj
 
 
-class TodoItemAdmin(admin.ModelAdmin):
-    form = TodoItemForm
-    list_display = ('title', 'completed', 'image_file_name', 'image_preview')
+class WebsiteSettingAdmin(admin.ModelAdmin):
+    form = WebsiteSettingForm
+    list_display = ('tag', 'image_preview', 'image_file_name')
 
     def image_preview(self, obj):
         if obj.image_binary:
-            # Display image as Base64 in the admin interface
-            import base64
-            encoded_image = base64.b64encode(obj.image_binary).decode('utf-8')
-            return f'localhost:8000/binary-image/{obj.pk}/'
+            image_url = f'http://localhost:8000/django/preview_image/{obj.image_file_name}/'
+            return mark_safe(f'<a href="{image_url}" target="_blank">View Image</a>')
         return "No image available"
 
     def image_file_name(self, obj):
@@ -47,4 +46,4 @@ class TodoItemAdmin(admin.ModelAdmin):
     readonly_fields = ['image_preview', 'image_file_name']
 
 
-admin.site.register(TodoItem, TodoItemAdmin)
+admin.site.register(WebsiteSetting, WebsiteSettingAdmin)
