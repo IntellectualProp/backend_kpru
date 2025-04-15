@@ -42,6 +42,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # Make sure this is the first middleware
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -49,7 +51,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://68.183.229.98:3000",  # your frontend URL
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -87,7 +92,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 
 # Password validation
