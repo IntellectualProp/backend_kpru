@@ -56,8 +56,10 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://68.183.229.98:3000",  # your frontend URL
 ]
-
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_TRUSTED_ORIGINS = [
+    "http://68.183.229.98:3000",
+]
 ROOT_URLCONF = 'backend_kpru.urls'
 
 TEMPLATES = [
