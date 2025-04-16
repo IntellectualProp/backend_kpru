@@ -60,7 +60,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://68.183.229.98:3000",
 ]
 
-ALLOWED_HOSTS = ["68.183.229.98", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["68.183.229.98", "localhost", "127.0.0.1", "188.166.204.28"]
 
 ROOT_URLCONF = 'backend_kpru.urls'
 
