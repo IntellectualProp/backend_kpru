@@ -52,12 +52,15 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://68.183.229.98:3000",  # your frontend URL
+    "http://68.183.229.98:3000",
+    "http://188.166.204.28:3000",
+    # your frontend URL
 ]
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "http://68.183.229.98:3000",
+    "http://188.166.204.28:3000",
 ]
 
 ALLOWED_HOSTS = ["68.183.229.98", "localhost", "127.0.0.1", "188.166.204.28"]
