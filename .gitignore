@@ -1,10 +1,11 @@
 *.pyc
 *.swp
 *.egg-info
-__pycache__/
 *.egg
 *.pyo
 *.pyd
 *.log
 *.sqlite3
 *.db
+__pycache__/
+*.py[cod]
